@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 public class ClienteEmpresaTest {
 
     @Test
-    public void cadastrarClienteEmpresaTest() {
+    public void testeCadastroClienteEmpresa() {
         Empresa empresa = new Empresa(123, "Apple");
         ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, empresa, 2197534L, "Pedro", 123);
         Assert.assertEquals((Integer) 1, clienteEmpresa.getCodigo());
@@ -28,43 +28,43 @@ public class ClienteEmpresaTest {
         Assert.assertEquals(123, clienteEmpresa.getTelefone());
     }
 
+
     @Test(expected = Exception.class)
-    public void cadastrarClienteEmpresaCodigoInvalidoTest() throws Exception {
+    public void testeCadastrarClienteEmpresaCodigoNulo() throws Exception {
+        Empresa empresa = new Empresa(123, "Apple");
+        ClienteEmpresa clienteEmpresa = new ClienteEmpresa(null, empresa, 2197534L, "Pedro", 123);
+    }
+    @Test(expected = Exception.class)
+    public void testeCadastrarClienteEmpresaCodigoInvalido() throws Exception {
         Empresa empresa = new Empresa(123, "Apple");
         ClienteEmpresa clienteEmpresa = new ClienteEmpresa(-1, empresa, 2197534L, "Pedro", 123);
     }
 
     @Test(expected = Exception.class)
-    public void cadastrarClienteEmpresaCodigoNuloTest() throws Exception {
-        Empresa empresa = new Empresa(123, "Apple");
-        ClienteEmpresa clienteEmpresa = new ClienteEmpresa(null, empresa, 2197534L, "Pedro", 123);
-    }
-
-    @Test(expected = Exception.class)
-    public void cadastrarClienteEmpresaEmpInvalidaTest() throws Exception {
-        ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, null, 2197534L, "Pedro", 123);
-    }
-
-    @Test(expected = Exception.class)
-    public void cadastrarClienteEmpresaCpfInvalidoTest() throws Exception {
+    public void testeCadastrarClienteEmpresaCpfInvalido() throws Exception {
         Empresa empresa = new Empresa(123, "Apple");
         ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, empresa, -2197534L, "Pedro", 123);
     }
 
     @Test(expected = Exception.class)
-    public void cadastrarClienteEmpresaNomeInvalidoTest() throws Exception {
+    public void testeCadastrarClienteEmpresaEmpInvalida() throws Exception {
+        ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, null, 2197534L, "Pedro", 123);
+    }
+
+    @Test(expected = Exception.class)
+    public void testeCadastrarClienteEmpresaNomeInvalido() throws Exception {
         Empresa empresa = new Empresa(123, "Apple");
         ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, empresa, 2197534L, null, 123);
     }
 
     @Test(expected = Exception.class)
-    public void cadastrarClienteEmpresaTelefoneInvalidoTest() throws Exception {
+    public void testeCadastrarClienteEmpresaTelefoneInvalido() throws Exception {
         Empresa empresa = new Empresa(123, "Apple");
         ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, empresa, 2197534L, "Pedro", -123);
     }
 
     @Test
-    public void alterarCodigoClienteEmpresaTest() {
+    public void testeAlterarCodigoClienteEmpresa() {
         Empresa empresa = new Empresa(123, "Apple");
         ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, empresa, 2197534L, "Pedro", 123);
         clienteEmpresa.setCodigo(2);
@@ -72,36 +72,43 @@ public class ClienteEmpresaTest {
     }
 
     @Test(expected = Exception.class)
-    public void alterarCodigoInvalidoClienteEmpresaTest() throws Exception {
+    public void testeAlterarCodigoInvalidoClienteEmpres() throws Exception {
         Empresa empresa = new Empresa(123, "Apple");
         ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, empresa, 2197534L, "Pedro", 123);
         clienteEmpresa.setCodigo(-002);
     }
 
     @Test(expected = Exception.class)
-    public void alterarCodigoNuloClienteEmpresaTest() throws Exception {
+    public void testeAlterarCodigoNuloClienteEmpresa() throws Exception {
         Empresa empresa = new Empresa(123, "Apple");
         ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, empresa, 2197534L, "Pedro", 123);
         clienteEmpresa.setCodigo(null);
     }
 
+
+    @Test(expected = Exception.class)
+    public void testeAlterarCpfInvalidoClienteEmpresa() throws Exception {
+        Empresa empresa = new Empresa(123, "Apple");
+        ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, empresa, 2197534L, "Pedro", 123);
+        clienteEmpresa.setCpf(-2197534L);
+    }
     @Test
-    public void alterarCpfClienteEmpresaTest() {
+    public void testeAlterarCpfClienteEmpresa() {
         Empresa empresa = new Empresa(123, "Apple");
         ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, empresa, 2197534L, "Pedro", 123);
         clienteEmpresa.setCpf(2018L);
         Assert.assertEquals(2018L, clienteEmpresa.getCpf());
     }
 
+
     @Test(expected = Exception.class)
-    public void alterarCpfInvalidoClienteEmpresaTest() throws Exception {
+    public void testeAlterarNomeInvalidoClienteEmpresa() throws Exception {
         Empresa empresa = new Empresa(123, "Apple");
         ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, empresa, 2197534L, "Pedro", 123);
-        clienteEmpresa.setCpf(-2197534L);
+        clienteEmpresa.setNome(null);
     }
-
     @Test
-    public void alterarNomeClienteEmpresaTest() {
+    public void testeAlterarNomeClienteEmpresa() {
         Empresa empresa = new Empresa(123, "Apple");
         ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, empresa, 2197534L, "Pedro", 123);
         clienteEmpresa.setNome("Carlos");
@@ -109,24 +116,17 @@ public class ClienteEmpresaTest {
     }
 
     @Test(expected = Exception.class)
-    public void alterarNomeInvalidoClienteEmpresaTest() throws Exception {
+    public void testeAlterarTelefoneInvalidoClienteEmpresa() throws Exception {
         Empresa empresa = new Empresa(123, "Apple");
         ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, empresa, 2197534L, "Pedro", 123);
-        clienteEmpresa.setNome(null);
+        clienteEmpresa.setTelefone(-55321223);
     }
-
     @Test
-    public void alterarTelefoneClienteEmpresaTest() {
+    public void testeAlterarTelefoneClienteEmpresa() {
         Empresa empresa = new Empresa(123, "Apple");
         ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, empresa, 2197534L, "Pedro", 123);
         clienteEmpresa.setTelefone(4321);
         assertEquals(987654321, clienteEmpresa.getTelefone());
     }
 
-    @Test(expected = Exception.class)
-    public void alterarTelefoneInvalidoClienteEmpresaTest() throws Exception {
-        Empresa empresa = new Empresa(123, "Apple");
-        ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, empresa, 2197534L, "Pedro", 123);
-        clienteEmpresa.setTelefone(-55321223);
-    }
 }
