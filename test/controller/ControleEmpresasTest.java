@@ -19,10 +19,10 @@ public class ControleEmpresasTest {
 
     @Test
     public void testeInsercao() {
-        ControleEmpresas controleEmpresaas = new ControleEmpresas();
+        ControleEmpresas controleEmpresas = new ControleEmpresas();
         Empresa empresa = new Empresa(1, "Apple");
-        controleEmpresaas.inserir(empresa.getNumeroContrato(), empresa.getNomeEmpresa());
-        Empresa ei = controleEmpresaas.retorna(1, "Apple");
+        controleEmpresas.inserir(empresa.getNumeroContrato(), empresa.getNomeEmpresa());
+        Empresa ei = controleEmpresas.retorna(1, "Apple");
         Assert.assertTrue(ei.getNomeEmpresa().equals(empresa.getNomeEmpresa()));
         Assert.assertTrue(ei.getNumeroContrato() == empresa.getNumeroContrato());
     }
@@ -37,12 +37,12 @@ public class ControleEmpresasTest {
 
     @Test
     public void testeBuscarEmpresas() {
-        Empresa empresa = new Empresa(1, "Apple");
+        Empresa empresa = new Empresa(1234, "Apple");
         ControleEmpresas controleEmpresas = new ControleEmpresas();
         controleEmpresas.inserir(empresa.getNumeroContrato(), empresa.getNomeEmpresa());
-        Empresa empresa2 = controleEmpresas.retorna(2, "Microsoft");
-        Assert.assertEquals("Microosoft", empresa2.getNomeEmpresa());
-        Assert.assertEquals(2, empresa2.getNumeroContrato());
+        Empresa ei = controleEmpresas.retorna(1234, "Apple");
+        Assert.assertEquals("Apple", ei.getNomeEmpresa());
+        Assert.assertEquals(1234, ei.getNumeroContrato());
 
     }
 }
