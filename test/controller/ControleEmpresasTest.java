@@ -10,6 +10,8 @@ import entidade.Empresa;
 import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Rule;
+import org.junit.rules.Timeout;
 
 /**
  *
@@ -17,12 +19,15 @@ import static org.junit.Assert.*;
  */
 public class ControleEmpresasTest {
 
+    @Rule
+    public Timeout globalTimeout = new Timeout(200);
+
     @Test
     public void testeInsercao() {
         ControleEmpresas controleEmpresas = new ControleEmpresas();
-        Empresa empresa = new Empresa(1, "Apple");
+        Empresa empresa = new Empresa(92, "Apple");
         controleEmpresas.inserir(empresa.getNumeroContrato(), empresa.getNomeEmpresa());
-        Empresa ei = controleEmpresas.retorna(1, "Apple");
+        Empresa ei = controleEmpresas.retorna(92, "Apple");
         Assert.assertTrue(ei.getNomeEmpresa().equals(empresa.getNomeEmpresa()));
         Assert.assertTrue(ei.getNumeroContrato() == empresa.getNumeroContrato());
     }
