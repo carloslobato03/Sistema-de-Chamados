@@ -76,6 +76,20 @@ public class PessoaTest {
         }
     }
     
+    public void testeAlteracaoNomeNuloENumeroNegativo(){
+        Pessoa p1 = new Pessoa("Nicholas",555);
+        
+        Assert.assertEquals("Nicholas", p1.getNome());
+        Assert.assertEquals(555, p1.getTelefone());
+        
+        p1.setNome(null);
+        p1.setTelefone(-123);
+        
+        if(p1.getNome()==null && p1.getTelefone()==-123){
+            Assert.fail("Nome e número nulos");
+        }
+    }
+    
     @BeforeClass
     public static void setUpClass() {
     }

@@ -178,6 +178,18 @@ public class RegistroChamadoTest {
     }
 
     @Test
+    public void testeAlterarAssuntoRegistroChamado() {
+        Tecnico tecnico = new Tecnico("Carlos", 123);
+        Empresa empresa = new Empresa(123, "Apple");
+        ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, empresa, 2197534L, "Nicholas", 123);
+        Chamado chamado = new Chamado("Título", "Descrição", 2, tecnico, clienteEmpresa, "Windows", "Xp", "Operação realizada com sucesso", 10.0);
+        chamado.setCodigo(1);
+        RegistroChamado registroChamado = new RegistroChamado("Problema de desempenho.", chamado, tecnico);
+        registroChamado.setAssunto("Cliente está insatisfeito");
+        assertEquals("Cliente está insatisfeito", registroChamado.getAssunto());
+    }
+    
+    @Test
     public void testeAlterarHoraRegistro() {
         Tecnico tecnico = new Tecnico("Carlos", 123);
         Empresa empresa = new Empresa(123, "Apple");
@@ -200,16 +212,5 @@ public class RegistroChamadoTest {
         registroChamado.setHora(null);
     }
 
-    @Test
-    public void testeAlterarAssuntoRegistroChamado() {
-        Tecnico tecnico = new Tecnico("Carlos", 123);
-        Empresa empresa = new Empresa(123, "Apple");
-        ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, empresa, 2197534L, "Pedro", 123);
-        Chamado chamado = new Chamado("Título", "Descrição", 2, tecnico, clienteEmpresa, "Windows", "Xp", "Operação realizada com sucesso", 10.0);
-        chamado.setCodigo(1);
-        RegistroChamado registroChamado = new RegistroChamado("Problema de desempenho.", chamado, tecnico);
-        registroChamado.setAssunto("Cliente está insatisfeito");
-        assertEquals("Cliente está insatisfeito", registroChamado.getAssunto());
-    }
-
+   
 }
