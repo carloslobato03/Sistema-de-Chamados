@@ -310,6 +310,20 @@ public class ChamadoTest {
         chamado2.setData("22/10/2016");
         assertEquals(false, chamado1.equals(chamado2));
     }
+    
+    @Test
+    public void testeVerificarChamadosIguaisPorTitulo() {
+        Tecnico tecnico = new Tecnico("Carlos", 123);
+        Empresa empresa = new Empresa(123, "Apple");
+        ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, empresa, 2197534L, "Nícholas", 123);
+        Chamado chamado1 = new Chamado("Título", "Descrição", 2, tecnico, clienteEmpresa, "Windows", "Xp", "Operação realizada com sucesso", 10.0);
+        Chamado chamado2 = new Chamado("Título do chamado", "Descrição do chamado", 2, tecnico, clienteEmpresa, "WINDOWS", "Vista", "Operação realizada", 20.0);
+        chamado1.setCodigo(1);
+        chamado2.setCodigo(1);
+        assertEquals(true, chamado1.equals(chamado2));
+        chamado2.setTitulo("Titulo do chamado 2");
+        assertEquals(false, chamado1.equals(chamado2));
+    }
 
     @Test
     public void testeVerificarChamadosPorCodigo() {
@@ -335,17 +349,4 @@ public class ChamadoTest {
         assertEquals(30.0, chamado.getDuracaoOperacao(), 0);
     }
 
-    @Test
-    public void testeVerificarChamadosIguaisPorTitulo() {
-        Tecnico tecnico = new Tecnico("Carlos", 123);
-        Empresa empresa = new Empresa(123, "Apple");
-        ClienteEmpresa clienteEmpresa = new ClienteEmpresa(1, empresa, 2197534L, "Pedro", 123);
-        Chamado chamado1 = new Chamado("Título", "Descrição", 2, tecnico, clienteEmpresa, "Windows", "Xp", "Operação realizada com sucesso", 10.0);
-        Chamado chamado2 = new Chamado("Título do chamado", "Descrição do chamado", 2, tecnico, clienteEmpresa, "WINDOWS", "Vista", "Operação realizada", 20.0);
-        chamado1.setCodigo(1);
-        chamado2.setCodigo(1);
-        assertEquals(true, chamado1.equals(chamado2));
-        chamado2.setTitulo("Titulo do chamado 2");
-        assertEquals(false, chamado1.equals(chamado2));
-    }
 }
