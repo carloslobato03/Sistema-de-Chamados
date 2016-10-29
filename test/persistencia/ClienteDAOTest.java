@@ -31,15 +31,6 @@ public class ClienteDAOTest {
     }
 
     @Test
-    public void hashMapTest() {
-        ClienteDAO cDAO = new ClienteDAO();
-
-        HashMap<Long, ClienteEmpresa> empHash = cDAO.voltaCashCliente();
-
-        Assert.assertNotNull(empHash);
-    }
-
-    @Test
     public void testeInsercaoCliente() {
         ClienteDAO clienteDAO = new ClienteDAO();
         Empresa empresa = new Empresa(1, "Apple");
